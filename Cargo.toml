@@ -1,13 +1,12 @@
 [package]
 name = "embree3-sys"
 version = "0.1.0"
+authors = ["Andrew Bauer <abau171@gmail.com>"]
 description = "FFI bindings for Intel's Embree high-performance ray tracing library."
 keywords = [
     "embree",
     "ray",
     "tracing",
-    "raytracing",
-    "ray-tracing",
     "simd",
     "bvh",
 ]
