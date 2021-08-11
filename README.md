@@ -1,4 +1,6 @@
-[![Build Status](https://app.travis-ci.com/abau171/embree3-sys.svg?branch=main)](https://app.travis-ci.com/abau171/embree3-sys)
+[![Crate](https://img.shields.io/crates/v/embree3-sys.svg)](https://crates.io/crates/embree3-sys/)
+[![API](https://docs.rs/embree3-sys/badge.svg)](https://docs.rs/embree3-sys/)
+[![Build Status](https://app.travis-ci.com/abau171/embree3-sys.svg?branch=main)](https://app.travis-ci.com/abau171/embree3-sys/)
 
 # `embree3-sys`
 Rust FFI bindings for Intel's [Embree](https://www.embree.org/) high-performance ray tracing library.
