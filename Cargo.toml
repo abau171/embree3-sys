@@ -1,7 +1,33 @@
 [package]
 name = "embree3-sys"
 version = "0.1.0"
+description = "FFI bindings for Intel's Embree high-performance ray tracing library."
+keywords = [
+    "embree",
+    "ray",
+    "tracing",
+    "raytracing",
+    "ray-tracing",
+    "simd",
+    "bvh",
+]
+categories = [
+    "external-ffi-bindings",
+    "graphics",
+    "rendering",
+    "multimedia",
+]
 edition = "2018"
+homepage = "https://github.com/abau171/embree3-sys/"
+repository = "https://github.com/abau171/embree3-sys/"
+readme = "README.md"
+documentation = "https://docs.rs/embree3-sys/"
+license = "MIT"
+
+exclude = [
+    ".travis.yml",
+    ".gitignore",
+]
 
 [build-dependencies]
 bindgen = "0.59.1"
