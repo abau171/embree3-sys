@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/abau171/embree-sys.svg?branch=main)](https://app.travis-ci.com/abau171/embree-sys)
+
 # `embree-sys`
 Rust bindings for Intel's [Embree](https://www.embree.org/) high-performance ray tracing library.
 
