@@ -5,13 +5,9 @@ use std::path::PathBuf;
 // some backup headers and the Embree lib is not linked. This is useful for
 // providing documentation and running CI without requiring an Embree
 // installation.
-const USE_BACKUP_HEADERS_ENV_VARS: &[&str] = &[
-    "DOCS_RS",
-    "CI",
-];
+const USE_BACKUP_HEADERS_ENV_VARS: &[&str] = &["DOCS_RS", "CI"];
 
 fn main() {
-
     // Based on https://rust-lang.github.io/rust-bindgen/tutorial-0.html
 
     // Determine if we should use the backup headers (if any of the environment
@@ -20,14 +16,12 @@ fn main() {
     for env_var in USE_BACKUP_HEADERS_ENV_VARS {
         println!("cargo:rerun-if-env-changed={}", env_var);
         use_backup_headers =
-            use_backup_headers
-            || env::var_os(env_var).filter(|v| v != "0").is_some();
+            use_backup_headers || env::var_os(env_var).filter(|v| v != "0").is_some();
     }
 
     // Select a wrapper header and link to the Embree lib.
     let wrapper_path;
     if !use_backup_headers {
-
         wrapper_path = "wrapper.h";
 
         // If EMBREE_DIR is set, add it as a linker search path.
@@ -42,14 +36,11 @@ fn main() {
 
         // Link to the Embree lib.
         println!("cargo:rustc-link-lib=embree3");
-
     } else {
-
         wrapper_path = "backup_embree_headers/wrapper.h";
 
         // We are using the backup headers, so don't attempt to link to the
         // Embree lib.
-
     }
 
     // If wrapper.h changes, rebuild the crate.
