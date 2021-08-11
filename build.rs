@@ -2,13 +2,15 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-
     // Based on https://rust-lang.github.io/rust-bindgen/tutorial-0.html
 
     // If EMBREE_DIR is set, add it as a linker search path.
     if let Ok(embree_dir_str) = env::var("EMBREE_DIR") {
         let embree_lib_dir = PathBuf::from(embree_dir_str).join("lib");
-        println!("cargo:rustc-link-search=native={}", embree_lib_dir.display());
+        println!(
+            "cargo:rustc-link-search=native={}",
+            embree_lib_dir.display()
+        );
         println!("cargo:rerun-if-env-changed=EMBREE_DIR");
     }
 
@@ -43,8 +45,8 @@ fn main() {
     //       several replace() calls, but there's no point in including another
     //       build dependency (eg. regex) to handle this. The runtime of the
     //       replace() calls is dwarfed by bindgen anyway.
-    let bindings_source =
-        bindings.to_string()
+    let bindings_source = bindings
+        .to_string()
         .replace("RTC_FORMAT_", "")
         .replace("RTC_BUILD_QUALITY_", "")
         .replace("RTC_DEVICE_PROPERTY_", "")
@@ -58,15 +60,14 @@ fn main() {
         .replace("RTC_BUILD_FLAG_", "")
         .replace(
             "pub type size_t = ::std::os::raw::c_ulong",
-            "pub type size_t = usize")
+            "pub type size_t = usize",
+        )
         .replace(
             "pub type __ssize_t = ::std::os::raw::c_long",
-            "pub type __ssize_t = isize");
+            "pub type __ssize_t = isize",
+        );
 
     // Write the processed bindings
-    let out_file =
-        PathBuf::from(env::var("OUT_DIR").unwrap())
-        .join("bindings.rs");
-    std::fs::write(out_file, bindings_source)
-        .expect("Unable to save generated Embree bindings.");
+    let out_file = PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs");
+    std::fs::write(out_file, bindings_source).expect("Unable to save generated Embree bindings.");
 }
